@@ -5,6 +5,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+// TODO: app.js and bootstrap.js unless we create PHP views (admin panel)
+
 require('./bootstrap');
 
 window.Vue = require('vue');
