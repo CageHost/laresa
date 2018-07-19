@@ -15,4 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('auth/google', 'Auth\RegisterController@redirectToProvider');
+Route::get('auth/google/callback', 'Auth\RegisterController@handleProviderCallback');
+
+Route::get('auth/facebook', 'Auth\RegisterController@redirectFacebook');
+Route::get('auth/facebook/callback', 'Auth\RegisterController@handleFacebook');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/{any}', 'SpaController@index')->where('any', '.*');

@@ -42,7 +42,8 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            // TODO: default token
+            'driver' => 'passport',
             'provider' => 'users',
         ],
     ],
