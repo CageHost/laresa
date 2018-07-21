@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    Route::get('/home', 'HomeController@index')->name('home');
+    Auth::routes();
 });
 
 Route::get('auth/google', 'Auth\RegisterController@redirectToProvider');
@@ -21,8 +25,5 @@ Route::get('auth/google/callback', 'Auth\RegisterController@handleProviderCallba
 Route::get('auth/facebook', 'Auth\RegisterController@redirectFacebook');
 Route::get('auth/facebook/callback', 'Auth\RegisterController@handleFacebook');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+// TODO: will this take twice as long, or be twice as good?
 Route::get('/{any}', 'SpaController@index')->where('any', '.*');

@@ -7,6 +7,7 @@
                     <md-menu md-size="small" md-direction="bottom-end" >
                         <router-link to="/games"><md-button>Games</md-button></router-link>
                         <router-link to="/events"><md-button>Events</md-button></router-link>
+                        <router-link to="/login"><md-button>Login</md-button></router-link>
                     </md-menu>
                     <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
                         <md-icon>menu</md-icon>
