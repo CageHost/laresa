@@ -9,11 +9,6 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/login',
-        name: 'login',
-        component: Login,
-    },
-    {
         path: '/games',
         name: 'games',
         component: Games,
@@ -22,6 +17,17 @@ const routes = [
         path: '/events',
         name: 'events',
         component: Events,
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: Login,
+        beforeEnter: (to, from, next) => {
+            if (window.user.name) {
+                next('/home')
+            }
+            next()
+        }
     },
 ]
 
