@@ -25,5 +25,7 @@ Route::get('auth/google/callback', 'Auth\RegisterController@handleProviderCallba
 Route::get('auth/facebook', 'Auth\RegisterController@redirectFacebook');
 Route::get('auth/facebook/callback', 'Auth\RegisterController@handleFacebook');
 
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
 // TODO: will this take twice as long, or be twice as good?
 Route::get('/{any}', 'SpaController@index')->where('any', '.*');

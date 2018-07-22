@@ -14,7 +14,7 @@
           </md-field>
         </md-card-content>
 
-        <md-progress-bar md-mode="indeterminate" v-if="!true" />
+        <md-progress-bar md-mode="indeterminate" v-if="sending" />
 
         <md-card-actions>
           <md-button href="/auth/google" class="md-raised md-accent">Google</md-button>
@@ -36,12 +36,14 @@
         form: {
             email: '',
         },
+        sending: false,
     }),
     methods: {
         submitForm () {
             this.$validator.validateAll()
         },
         validateBeforeSubmit() {
+            // this.sending = true
             // TODO: fix bug errors clear after submit
             this.$validator.validateAll().then((result) => {
                 if (!result) {

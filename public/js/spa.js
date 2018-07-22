@@ -52915,7 +52915,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // email: '',
             form: {
                 email: ''
-            }
+            },
+            sending: false
         };
     },
     methods: {
@@ -52925,6 +52926,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         validateBeforeSubmit: function validateBeforeSubmit() {
             var _this = this;
 
+            // this.sending = true
             // TODO: fix bug errors clear after submit
             this.$validator.validateAll().then(function (result) {
                 if (!result) {
@@ -53031,7 +53033,7 @@ var render = function() {
               1
             ),
             _vm._v(" "),
-             false
+            _vm.sending
               ? _c("md-progress-bar", { attrs: { "md-mode": "indeterminate" } })
               : _vm._e(),
             _vm._v(" "),
@@ -53320,6 +53322,8 @@ exports.push([module.i, "\n.md-headline[data-v-66ab2f82] {\n  font-weight: bold;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layouts_GuestLayout_vue__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layouts_GuestLayout_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__layouts_GuestLayout_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layouts_DefaultLayout_vue__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layouts_DefaultLayout_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__layouts_DefaultLayout_vue__);
 //
 //
 //
@@ -53342,17 +53346,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            user: {}
+        };
+    },
+
     /* TODO: why is name? */
     name: 'App',
     components: {
-        GuestLayout: __WEBPACK_IMPORTED_MODULE_0__layouts_GuestLayout_vue___default.a
+        GuestLayout: __WEBPACK_IMPORTED_MODULE_0__layouts_GuestLayout_vue___default.a,
+        DefaultLayout: __WEBPACK_IMPORTED_MODULE_1__layouts_DefaultLayout_vue___default.a
     },
     created: function created() {
-        console.log(this);
+        console.log(window.user);
+        this.user = window.user;
     }
 });
 
@@ -53704,20 +53731,396 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  return this.user.name
+    ? _c(
+        "div",
+        [
+          _c(
+            "DefaultLayout",
+            [
+              _c("md-app-content", [
+                _c("h1", { staticClass: "md-headline" }, [
+                  _vm._v(
+                    "Put on your gaming socks " + _vm._s(this.user.name) + "!"
+                  )
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "md-subheading" }, [
+                  _vm._v("or if your socks are noob, check the prize shop...")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "filler" }, [_c("router-view")], 1)
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+    : _c(
+        "div",
+        [
+          _c(
+            "GuestLayout",
+            [
+              _c("md-app-content", [
+                _c("h1", { staticClass: "md-headline" }, [
+                  _vm._v("Put on your gaming socks noob!")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "md-subheading" }, [
+                  _vm._v("or if your socks are noob, check the prize shop...")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "filler" }, [_c("router-view")], 1)
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-66ab2f82", module.exports)
+  }
+}
+
+/***/ }),
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(78)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(80)
+/* template */
+var __vue_template__ = __webpack_require__(81)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3219ba63"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/layouts/DefaultLayout.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3219ba63", Component.options)
+  } else {
+    hotAPI.reload("data-v-3219ba63", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(79);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(9)("23b8fd8e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3219ba63\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DefaultLayout.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3219ba63\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DefaultLayout.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(8)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.md-app[data-v-3219ba63] {\n  max-height: 100vh;\n  border: 1px solid rgba(0, 0, 0, 0.12);\n}\n.md-app-toolbar[data-v-3219ba63] {\n  height: 196px;\n}\n.md-drawer[data-v-3219ba63] {\n  width: 230px;\n  max-width: calc(100vw - 125px);\n}\n#title[data-v-3219ba63] {\n  margin-left: 0;\n}\n#title span[data-v-3219ba63] {\n    color: red;\n}\n.filler[data-v-3219ba63] {\n  height: 1200px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'GuestLayout',
+    data: function data() {
+        return {
+            menuVisible: false
+        };
+    },
+    created: function created() {
+        console.log(this);
+    }
+});
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _c(
-    "GuestLayout",
+    "div",
+    { staticClass: "page-container" },
     [
-      _c("md-app-content", [
-        _c("h1", { staticClass: "md-headline" }, [
-          _vm._v("Put on your gaming socks!")
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "md-subheading" }, [
-          _vm._v("or if you got noob socks, check the prize shop...")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "filler" }, [_c("router-view")], 1)
-      ])
+      _c(
+        "md-app",
+        {
+          attrs: {
+            "md-waterfall": "",
+            "md-mode": "flexible",
+            "md-waterfall": ""
+          }
+        },
+        [
+          _c("md-app-toolbar", { staticClass: "md-large md-primary" }, [
+            _c("div", { staticClass: "md-toolbar-row" }, [
+              _c(
+                "div",
+                { staticClass: "md-toolbar-section-end" },
+                [
+                  _c(
+                    "md-menu",
+                    {
+                      attrs: {
+                        "md-size": "small",
+                        "md-direction": "bottom-end"
+                      }
+                    },
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: "/games" } },
+                        [_c("md-button", [_vm._v("Games")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "router-link",
+                        { attrs: { to: "/events" } },
+                        [_c("md-button", [_vm._v("Events")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        { attrs: { href: "/logout" } },
+                        [_c("md-button", [_vm._v("Logout")])],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "md-button",
+                    {
+                      staticClass: "md-icon-button",
+                      on: {
+                        click: function($event) {
+                          _vm.menuVisible = !_vm.menuVisible
+                        }
+                      }
+                    },
+                    [_c("md-icon", [_vm._v("menu")])],
+                    1
+                  )
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "md-toolbar-row" }, [
+              _c(
+                "div",
+                { staticClass: "md-display-1", attrs: { id: "title" } },
+                [
+                  _c("span", [_vm._v("eS")]),
+                  _vm._v("port"),
+                  _c("span", [_vm._v("A")]),
+                  _vm._v("lliance")
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "md-app-drawer",
+            {
+              staticClass: "md-right",
+              attrs: { "md-active": _vm.menuVisible },
+              on: {
+                "update:mdActive": function($event) {
+                  _vm.menuVisible = $event
+                }
+              }
+            },
+            [
+              _c(
+                "md-toolbar",
+                {
+                  staticClass: "md-transparent",
+                  attrs: { "md-elevation": "0" }
+                },
+                [_vm._v("\r\n                Navigation\r\n            ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "md-list",
+                [
+                  _c(
+                    "md-list-item",
+                    [
+                      _c(
+                        "span",
+                        { staticClass: "md-list-item-text" },
+                        [
+                          _c(
+                            "router-link",
+                            { attrs: { to: { name: "games" } } },
+                            [_vm._v("Games")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("md-icon", [_vm._v("games")])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "md-list-item",
+                    [
+                      _c(
+                        "span",
+                        { staticClass: "md-list-item-text" },
+                        [
+                          _c("router-link", { attrs: { to: "events" } }, [
+                            _vm._v("Events")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("md-icon", [_vm._v("calendar_today")])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._t("default")
+        ],
+        2
+      )
     ],
     1
   )
@@ -53728,7 +54131,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-66ab2f82", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-3219ba63", module.exports)
   }
 }
 

@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons">
     <link href="{{ asset('css/spa.css') }}" rel="stylesheet">
 
+    <script>window.user = <?php echo json_encode($user); ?></script>
+
     <title>ESportAlliance</title>
 </head>
 <body>
