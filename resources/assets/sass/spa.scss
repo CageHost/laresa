@@ -11,6 +11,38 @@
 
 @import "~vue-material/dist/theme/all";
 
+@import "~vue-material/src/components/MdLayout/mixins";
+
+// TODO: PR md-medium-up-hide to vuematerial
+.esa-medium-up-hide {
+    @include md-layout-medium-and-up {
+        display: none;
+    }
+}
+
+.esa-medium-down-hide {
+    display: none;
+    @include md-layout-medium-and-up {
+        display: inherit;
+    }
+}
+
+/*
+.esa-medium-up-hide {
+    @media (min-width: $md-breakpoint-small) {
+        display: none;
+    }
+}
+
+
+@media (max-width: $md-breakpoint-small) {
+    .esa-medium-down-hide {
+        display: none;
+    }
+}
+*/
+
+
 body {
     // background: #333;
 }

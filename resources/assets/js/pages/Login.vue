@@ -1,7 +1,7 @@
 <template>
   <div>
     <form novalidate class="md-layout md-alignment-top-center" @submit.prevent="validateBeforeSubmit">
-      <md-card class="md-layout-item md-size-50 md-small-size-100">
+      <md-card class="md-layout-item">
         <md-card-header>
           <div class="md-title">Login</div>
         </md-card-header>
@@ -67,10 +67,14 @@
 </script>
 
 <style lang="scss" scoped>
-  .md-progress-bar {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-  }
+    .md-card {
+        margin: 0;
+    }
+
+    .md-progress-bar {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
 </style>

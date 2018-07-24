@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import Home from './pages/Home'
 import Login from './pages/Login'
 import Games from './pages/Games'
 import Events from './pages/Events'
@@ -8,6 +9,11 @@ import Events from './pages/Events'
 Vue.use(VueRouter)
 
 const routes = [
+    {
+        path: '/',
+        name: 'home',
+        component: Home,
+    },
     {
         path: '/games',
         name: 'games',

@@ -1,36 +1,40 @@
 <template>
-    <div v-if="this.user.name">
+    <div v-if="this.user">
         <!-- TODO: DRY -->
         <DefaultLayout>
-                <md-app-content>
-                        <h1 class="md-headline">Put on your gaming socks {{this.user.name}}!</h1>
-                        <p class="md-subheading">or if your socks are noob, check the prize shop...</p>
-                        <div class="filler">
-                            <router-view></router-view>
-                        </div>
-                </md-app-content>
+            <md-app-content>
+                <div class="filler">
+                    <router-view :authUser="this.user"></router-view>
+                </div>
+            </md-app-content>
         </DefaultLayout>
     </div>
     <div v-else>
         <GuestLayout>
-                <md-app-content>
-                        <h1 class="md-headline">Put on your gaming socks noob!</h1>
-                        <p class="md-subheading">or if your socks are noob, check the prize shop...</p>
+            <md-app-content>
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item">
                         <div class="filler">
-                            <router-view></router-view>
+                            <router-view :authUser="false"></router-view>
                         </div>
-                </md-app-content>
+                    </div>
+                    <div class="md-layout-item md-size-25 sidebar">
+                        <Login/>
+                    </div>
+                </div>
+            </md-app-content>
         </GuestLayout>
     </div>
 </template>
 
 <style lang="scss" scoped>
-    .md-headline {
-        font-weight: bold;
-    }
-
     .filler {
         min-height: 1200px;
+    }
+
+    .sidebar {
+        min-width: 200px;
+        // background: #ccc;
     }
 </style>
 
@@ -38,21 +42,25 @@
     import GuestLayout from './layouts/GuestLayout.vue'
     import DefaultLayout from './layouts/DefaultLayout.vue'
 
+    import Login from './components/Login.vue'
+
     export default {
+        /* TODO: why name? */
+        name: 'App',
         data() {
             return {
-                user: {}
+                user: false
             }
         },
-        /* TODO: why is name? */
-        name: 'App',
         components:{
             GuestLayout,
             DefaultLayout,
+            Login,
         },
         created: function () {
-            console.log(window.user)
-            this.user = window.user
+            if (window.user.name) {
+                this.user = window.user
+            }
         }
     }
 </script>

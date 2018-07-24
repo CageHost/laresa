@@ -9486,3 +9486,66 @@ html.md-theme-default {
   background-color: var(--md-theme-default-primary, #212121);
 }
 
+/**
+ * The layout system breakpoints
+ * ---
+ * @access private
+ * @type layout
+ * @group layout
+ */
+
+/**
+ * The available gutter sizes
+ * ---
+ * @access private
+ * @type layout
+ * @group layout
+ */
+
+/**
+ * Breakpoint
+ */
+
+/**
+ * Base
+ */
+
+/**
+ * Layout Item
+ */
+
+/**
+ * Hide Element
+ */
+
+@media (min-width: 960px) {
+  .esa-medium-up-hide {
+    display: none;
+  }
+}
+
+.esa-medium-down-hide {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .esa-medium-down-hide {
+    display: inherit;
+  }
+}
+
+/*
+.esa-medium-up-hide {
+    @media (min-width: $md-breakpoint-small) {
+        display: none;
+    }
+}
+
+
+@media (max-width: $md-breakpoint-small) {
+    .esa-medium-down-hide {
+        display: none;
+    }
+}
+*/
+

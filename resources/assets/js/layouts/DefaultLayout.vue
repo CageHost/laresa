@@ -1,15 +1,17 @@
 <template>
 <div class="page-container">
-    <md-app md-waterfall md-mode="flexible" md-waterfall>
+    <md-app md-mode="flexible" md-waterfall>
         <md-app-toolbar class="md-large md-primary">
             <div class="md-toolbar-row">
                 <div class="md-toolbar-section-end">
-                    <md-menu md-size="small" md-direction="bottom-end" >
+                    <md-menu class="esa-medium-down-hide">
                         <router-link to="/games"><md-button>Games</md-button></router-link>
                         <router-link to="/events"><md-button>Events</md-button></router-link>
+                        <router-link to="/"><md-button>Teams</md-button></router-link>
+                        <router-link to="/"><md-button>Prizes</md-button></router-link>
                         <a href="/logout"><md-button>Logout</md-button></a>
                     </md-menu>
-                    <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
+                    <md-button class="md-icon-button esa-medium-up-hide" @click="menuVisible = !menuVisible">
                         <md-icon>menu</md-icon>
                     </md-button>
                 </div>
