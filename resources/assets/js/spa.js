@@ -1,17 +1,26 @@
 window.Vue = require('vue');
 
-import VueMaterial from 'vue-material';
-import VeeValidate from 'vee-validate';
-// import VueRouter from 'vue-router';
+import Vuetify from 'vuetify';
+// TODO: using vuetify, uninstall:
+// import VeeValidate from 'vee-validate';
 
 import router from './router.js'
 
-// import 'vue-material/dist/vue-material.min.css'
-// import 'vue-material/dist/theme/default-dark.css'
+// import colors from 'vuetify/es5/util/colors'
 
-Vue.use(VueMaterial)
-Vue.use(VeeValidate);
-// Vue.use(VueRouter)
+Vue.use(Vuetify, {
+    theme: {
+        // primary: colors.red.base,
+        primary: '#F44336',
+        // secondary: '#333',
+        // accent: '#333',
+        // error: '#333',
+        // info: '#333',
+        // success: '#333',
+        // warning: '#333'
+    }
+})
+
 
 import App from './App.vue'
 

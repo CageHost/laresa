@@ -1,12 +1,8 @@
 <template>
-    <v-container fluid>
-        <v-layout align-center justify-center>
-            <v-flex xs12>
-                <h1 class="md-headline">Put on your gaming socks {{this.authOrNoob}}!</h1>
-                <p class="md-subheading">or if you got noob socks, check out the prize shop...</p>
-            </v-flex>
-        </v-layout>
-    </v-container>
+    <div>
+        <h1 class="md-headline">Put on your gaming socks {{this.authOrNoob}}!</h1>
+        <p class="md-subheading">or if your socks are noob, check the prize shop...</p>
+    </div>
 </template>
 
 <script>

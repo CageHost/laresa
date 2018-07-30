@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 
 import Home from './pages/Home'
 import Login from './pages/Login'
+import Games from './pages/Games'
+import Events from './pages/Events'
 
 Vue.use(VueRouter)
 
@@ -13,12 +15,22 @@ const routes = [
         component: Home,
     },
     {
+        path: '/games',
+        name: 'games',
+        component: Games,
+    },
+    {
+        path: '/events',
+        name: 'events',
+        component: Events,
+    },
+    {
         path: '/login',
         name: 'login',
         component: Login,
         beforeEnter: (to, from, next) => {
             if (window.user.name) {
-                next('/')
+                next('/home')
             }
             next()
         }
@@ -26,8 +38,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-    mode: 'history',
-    routes,
+  mode: 'history',
+  routes,
 });
 
 export default router;

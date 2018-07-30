@@ -1,95 +1,99 @@
 <template>
-<div class="md-layout">
-    <div class="md-layout-item md-size-100">
-        <form novalidate @submit.prevent="validateBeforeSubmit">
-            <md-card>
-                <md-card-content>
-                <md-field :class="isValid('email')">
-                <label for="email">Email</label>
-                <md-input v-model="form.email" v-validate="'required|email'" type="email" name="email" id="email" autocomplete="email" />
-                <span class="md-error" v-show="errors.has('email')">{{ errors.first('email') }}</span>
-                </md-field>
-
-                <div class="md-layout md-gutter">
-                    <div class="md-layout-item md-size-100">
-                        <md-button type="submit" class="md-raised" :disabled="!true">Login</md-button>
-                    </div>
-                    <div class="md-layout-item">
-                        <md-button href="/auth/google" class="md-raised md-accent">Google</md-button>
-                    </div>
-                    <div class="md-layout-item">
-                        <md-button href="/auth/facebook" class="md-raised md-primary">Facebook</md-button>
-                    </div>
-                </div>
-                </md-card-content>
-                <md-progress-bar md-mode="indeterminate" v-if="sending" />
-            </md-card>
-            <md-snackbar>The user was saved with success!</md-snackbar>
-        </form>
-    </div>
-</div>
+    <v-card dark class="elevation-12">
+        <v-toolbar color="primary">
+            <v-toolbar-title>
+                <v-btn outline>Login</v-btn>
+            </v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-toolbar-title>
+                <v-btn>Register</v-btn>
+            </v-toolbar-title>
+        </v-toolbar>
+        <v-container fluid grid-list-md>
+            <v-form ref="form" v-model="valid" lazy-validation>
+                <v-text-field
+                    v-model="name"
+                    :rules="nameRules"
+                    label="Username"
+                    required
+                ></v-text-field>
+                <v-text-field
+                    v-model="email"
+                    :rules="emailRules"
+                    label="E-mail"
+                    required
+                    ></v-text-field>
+                <v-layout row>
+                    <v-flex>
+                        <v-btn class="primary"
+                            block
+                            :disabled="!valid"
+                            @click="submit"
+                            >
+                            Login
+                        </v-btn>
+                    </v-flex>
+                </v-layout>
+                <v-divider class="my-2"/>
+                <v-layout row wrap>
+                    <v-flex class="xs6">
+                        <v-btn href="/auth/google" block color="red darken-1">Google</v-btn>
+                    </v-flex>
+                    <v-flex class="xs6">
+                        <v-btn block color="blue darken-1">Facebook</v-btn>
+                    </v-flex>
+                    <v-flex class="xs6">
+                        <v-btn block color="purple">Twitch</v-btn>
+                    </v-flex>
+                    <v-flex class="xs6">
+                        <v-btn block color="light-blue">Twitter</v-btn>
+                    </v-flex>
+                </v-layout>
+            </v-form>
+        </v-container>
+    </v-card>
 </template>
-
 <script>
-  export default {
-    name: 'Login',
+import axios from 'axios'
+
+export default {
     data: () => ({
-        // email: '',
-        form: {
-            email: '',
-        },
-        sending: false,
+        valid: true,
+        name: '',
+        nameRules: [
+            v => !!v || 'Name is required',
+            v => (v && v.length >= 4) || 'Name must be more than 3 characters'
+        ],
+        email: '',
+        emailRules: [
+            v => !!v || 'E-mail is required',
+            v => /.+@.+/.test(v) || 'E-mail must be valid'
+        ],
     }),
     methods: {
-        submitForm () {
-            this.$validator.validateAll()
-        },
-        validateBeforeSubmit() {
-            this.sending = true
-            // TODO: fix bug errors clear after submit
-            this.$validator.validateAll().then((result) => {
-                if (!result) {
-                    // eslint-disable-next-line
-                    console.log('error');
-                } else {
-                    console.log(result)
-                    console.log('valid');
-                }
-                window.setTimeout(() => {
-                    this.sending = false
-                }, 1000)
-                console.log(this.errors.first('email'))
-            });
-            console.log(this.errors)
-        },
-        isValid ($fieldName) {
-            if (this.errors.has($fieldName)) {
-                return 'md-invalid'
+        submit () {
+            if (this.$refs.form.validate()) {
+                /*
+                axios.post('/api/submit', {
+                name: this.name,
+                email: this.email,
+                })
+                */
             }
+        },
+        clear () {
+            this.$refs.form.reset()
         }
     }
-  }
+}
 </script>
 
-<style lang="scss" scoped>
-    .md-card {
-        margin: 0;
+<style scoped>
+    .v-toolbar__title button {
+        margin-left: 0;
+        margin-right: 0;
     }
-    .md-input {
-        overflow: hidden;
-    }
-    .md-progress-bar {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-    }
-    .md-button {
-        margin: 0;
-        width: 100%;
-    }
-    .md-card-content .md-layout-item {
-        margin-top: 4px;
-        margin-bottom: 4px;
+    .v-card__actions {
+        padding: 0 24px 24px 24px;
     }
 </style>
