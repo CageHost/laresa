@@ -1,70 +1,27 @@
 <template>
-    <v-app>
-        <v-navigation-drawer app right temporary v-model="drawer" v-resize="showHideDrawer">
-            <v-list>
-                <v-list-tile to="/">
-                    <v-list-tile-content >
-                        <v-list-tile-title class="text-xs-right">Home</v-list-tile-title>
-                    </v-list-tile-content>
-                    <v-list-tile-action>
-                        <v-icon>home</v-icon>
-                    </v-list-tile-action>
-                </v-list-tile>
-                <v-list-tile @click="">
-                    <v-list-tile-content>
-                        <v-list-tile-title class="text-xs-right">Games</v-list-tile-title>
-                    </v-list-tile-content>
-                    <v-list-tile-action>
-                        <v-icon>gamepad</v-icon>
-                    </v-list-tile-action>
-                </v-list-tile>
-            </v-list>
-        </v-navigation-drawer>
-        <v-toolbar app dark extended scroll-toolbar-off-screens>
-            <v-toolbar-title slot="extension">
-                <div class="hidden-md-and-up"><span>ESA</span></div>
-                <router-link to="/"><div class="hidden-sm-and-down">
-                    <span>eS</span>port<span>A</span>lliance
-                </div></router-link>
-            </v-toolbar-title>
-            <v-spacer slot="extension"></v-spacer>
-            <v-btn icon slot="extension" class="hidden-md-and-up ma-0"
-                @click.stop="drawer = !drawer"
-            >
-                <v-icon>menu</v-icon>
-            </v-btn>
-            <v-toolbar-items slot="extension" class="hidden-sm-and-down">
-                <v-btn flat>Events</v-btn>
-                <v-btn flat>Games</v-btn>
-                <v-btn flat>Teams</v-btn>
-                <v-btn flat>Prizes</v-btn>
-                <v-btn v-if="this.user" href="/logout" flat>Logout</v-btn>
-                <v-btn v-else to="/login" flat>Login</v-btn>
-            </v-toolbar-items>
-        </v-toolbar>
-        <v-content>
-            <router-view :authUser="this.user"></router-view>
-        </v-content>
-        <v-footer app></v-footer>
-    </v-app>
+    <!-- TODO: vuex that user -->
+    <DefaultLayout :authUser="this.user">
+        <router-view :authUser="this.user"></router-view>
+    </DefaultLayout>
 </template>
 
 <script>
-    export default {
-        components: {},
+    import DefaultLayout from './layouts/Default.vue'
 
+    export default {
+        components: {
+            DefaultLayout,
+        },
         // TODO: why function
         data: () => ({
             user: false,
             drawer: null
         }),
-
         created: function() {
             if (window.user.name) {
                 this.user = window.user
             }
         },
-
         methods: {
             showHideDrawer: function() {
                 // TODO: hack, stop using breakpoints for mobile
@@ -76,25 +33,3 @@
         }
     }
 </script>
-
-<style lang="scss" scoped>
-    .filler {
-        min-height: 9000px;
-    }
-
-    .v-toolbar__title {
-        font-size: 200%;
-        letter-spacing: 3px;
-        span {
-            color: red;
-        }
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-    }
-
-    .v-toolbar__extension>.v-toolbar__title {
-        margin-left: 0 !important;
-    }
-</style>

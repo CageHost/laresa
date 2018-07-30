@@ -1,8 +1,6 @@
 window.Vue = require('vue');
 
 import Vuetify from 'vuetify';
-// TODO: using vuetify, uninstall:
-// import VeeValidate from 'vee-validate';
 
 import router from './router.js'
 
