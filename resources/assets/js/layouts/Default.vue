@@ -12,7 +12,7 @@
                         <v-icon>home</v-icon>
                     </v-list-tile-action>
                 </v-list-tile>
-                <v-list-tile @click="">
+                <v-list-tile to="/games">
                     <v-list-tile-content>
                         <v-list-tile-title class="text-xs-right">Games</v-list-tile-title>
                     </v-list-tile-content>
@@ -38,8 +38,8 @@
                 <v-icon>menu</v-icon>
             </v-btn>
             <v-toolbar-items slot="extension" class="hidden-sm-and-down">
+                <v-btn to="/games" flat>Games</v-btn>
                 <v-btn flat>Events</v-btn>
-                <v-btn flat>Games</v-btn>
                 <v-btn flat>Teams</v-btn>
                 <v-btn flat>Prizes</v-btn>
                 <v-btn v-if="this.authUser" href="/logout" flat>Logout</v-btn>

@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 
 import Home from './pages/Home'
 import Login from './pages/Login'
+import Games from './pages/Games'
+import GamePage from './pages/Game'
 
 Vue.use(VueRouter)
 
@@ -12,6 +14,12 @@ const routes = [
         name: 'home',
         component: Home,
     },
+    {
+        path: '/games',
+        name: 'games',
+        component: Games,
+    },
+    { path: '/game/:alias', component: GamePage },
     {
         path: '/login',
         name: 'login',

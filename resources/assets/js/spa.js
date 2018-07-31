@@ -1,6 +1,7 @@
 window.Vue = require('vue');
 
 import Vuetify from 'vuetify';
+window.axios = require('axios');
 
 import router from './router.js'
 

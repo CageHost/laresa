@@ -27,5 +27,11 @@ Route::get('auth/facebook/callback', 'Auth\RegisterController@handleFacebook');
 
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
+// Local API
+Route::prefix('lapi')->namespace('Lapi')->group(function () {
+    Route::get('/games', 'GameController@index');
+    Route::get('/game/{id}', 'GameController@show');
+});
+
 // TODO: will this take twice as long, or be twice as good?
 Route::get('/{any}', 'SpaController@index')->where('any', '.*');
