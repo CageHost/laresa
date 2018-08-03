@@ -1,8 +1,21 @@
 <template>
     <v-app>
-        <v-navigation-drawer app right temporary
+        <v-navigation-drawer app
         v-model="drawer"
-        v-resize="showHideDrawer">
+        v-resize="showHideDrawer"
+        permanent
+        clipped
+        >
+            <v-toolbar dark color="primary"  prominent>
+                <v-toolbar-title>
+                    <router-link to="/">
+                        <div class="hidden-md-and-up"><span>ESA</span></div>
+                        <div class="hidden-sm-and-down">
+                            <span>eS</span>port<span>A</span>lliance
+                        </div>
+                    </router-link>
+                </v-toolbar-title>
+            </v-toolbar>
             <v-list>
                 <v-list-tile to="/">
                     <v-list-tile-content >
@@ -23,8 +36,8 @@
             </v-list>
         </v-navigation-drawer>
 
-        <v-toolbar app dark prominent extended scroll-toolbar-off-screen>
-            <v-toolbar-title slot="extension">
+        <v-toolbar app dark prominent scroll-off-screen class="ma-0 pa-0">
+            <v-toolbar-title>
                 <router-link to="/">
                     <div class="hidden-md-and-up"><span>ESA</span></div>
                     <div class="hidden-sm-and-down">
@@ -32,12 +45,12 @@
                     </div>
                 </router-link>
             </v-toolbar-title>
-            <v-spacer slot="extension"></v-spacer>
-            <v-btn icon slot="extension" class="hidden-md-and-up ma-0"
+            <v-spacer></v-spacer>
+            <v-btn icon class="hidden-md-and-up ma-0"
             @click.stop="drawer = !drawer">
                 <v-icon>menu</v-icon>
             </v-btn>
-            <v-toolbar-items slot="extension" class="hidden-sm-and-down">
+            <v-toolbar-items class="hidden-sm-and-down">
                 <v-btn to="/games" flat>Games</v-btn>
                 <v-btn flat>Events</v-btn>
                 <v-btn flat>Teams</v-btn>
@@ -67,7 +80,8 @@ export default {
 
     data: () => ({
         user: false,
-        drawer: null
+        drawer: true,
+        mini: true
     }),
 
     methods: {
@@ -76,6 +90,7 @@ export default {
             // TODO: isMobile https://vuetifyjs.com/en/layout/breakpoints
             if (this.drawer && this.$vuetify.breakpoint.mdAndUp) {
                 this.drawer = !this.drawer
+                this.mini = true
             }
         }
     }
