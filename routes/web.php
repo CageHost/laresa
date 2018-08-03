@@ -31,6 +31,9 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::prefix('lapi')->namespace('Lapi')->group(function () {
     Route::get('/games', 'GameController@index');
     Route::get('/game/{id}', 'GameController@show');
+
+    Route::get('/events', 'EventController@index');
+    Route::get('/event/{id}', 'EventController@show');
 });
 
 // TODO: will this take twice as long, or be twice as good?

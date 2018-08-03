@@ -5,16 +5,10 @@ namespace App\Http\Controllers\Lapi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Game;
+use App\Event;
 
-class GameController extends Controller
+class EventController extends Controller
 {
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -22,13 +16,11 @@ class GameController extends Controller
      */
     public function index()
     {
-        // $games = Game::where('active', 1)
-        $games = Game::orderBy('name', 'desc')
+        $events = Event::orderBy('name', 'desc')
           ->take(100)
-          ->with('events')
+          ->with('games')
           ->get();
-
-        return response()->json($games);
+        return response()->json($events);
     }
 
     /**
@@ -60,9 +52,9 @@ class GameController extends Controller
      */
     public function show($alias)
     {
-        $game = Game::where('alias', '=', $alias)
-        ->with('events')->firstOrFail();
-        return response()->json($game);
+        //  $event = Event::with('types')->find($id);
+        $event = Event::where('alias', '=', $alias)->with('games')->with('games')->firstOrFail();
+        return response()->json($event);
     }
 
     /**
