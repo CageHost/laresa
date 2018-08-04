@@ -34,6 +34,9 @@ Route::prefix('lapi')->namespace('Lapi')->group(function () {
 
     Route::get('/events', 'EventController@index');
     Route::get('/event/{id}', 'EventController@show');
+
+    Route::get('/teams', 'TeamController@index');
+    Route::get('/team/{id}', 'TeamController@show');
 });
 
 // TODO: will this take twice as long, or be twice as good?

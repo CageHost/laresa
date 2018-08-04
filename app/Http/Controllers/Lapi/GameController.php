@@ -26,6 +26,7 @@ class GameController extends Controller
         $games = Game::orderBy('name', 'desc')
           ->take(100)
           ->with('events')
+          ->with('teams')
           ->get();
 
         return response()->json($games);
@@ -61,7 +62,8 @@ class GameController extends Controller
     public function show($alias)
     {
         $game = Game::where('alias', '=', $alias)
-        ->with('events')->firstOrFail();
+        ->with('events')->with('teams')
+        ->firstOrFail();
         return response()->json($game);
     }
 

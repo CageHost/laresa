@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Lapi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Team;
+
 class TeamController extends Controller
 {
     /**
@@ -14,7 +16,12 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        $teams = Team::orderBy('name', 'desc')
+          ->take(100)
+          ->with('games')
+          ->with('events')
+          ->get();
+        return response()->json($teams);
     }
 
     /**
@@ -44,9 +51,12 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($alias)
     {
-        //
+        $team = Team::where('alias', '=', $alias)
+        ->with('events')->with('games')
+        ->firstOrFail();
+        return response()->json($team);
     }
 
     /**

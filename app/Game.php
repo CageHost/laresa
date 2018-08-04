@@ -14,4 +14,9 @@ class Game extends Model
     {
         return $this->belongsToMany('App\Event');
     }
+
+    public function teams()
+    {
+        return $this->belongsToMany('App\Team');
+    }
 }

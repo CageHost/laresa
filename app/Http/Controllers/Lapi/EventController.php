@@ -19,6 +19,7 @@ class EventController extends Controller
         $events = Event::orderBy('name', 'desc')
           ->take(100)
           ->with('games')
+          ->with('teams')
           ->get();
         return response()->json($events);
     }
@@ -53,7 +54,8 @@ class EventController extends Controller
     public function show($alias)
     {
         //  $event = Event::with('types')->find($id);
-        $event = Event::where('alias', '=', $alias)->with('games')->with('games')->firstOrFail();
+        $event = Event::where('alias', '=', $alias)
+        ->with('games')->with('teams')->firstOrFail();
         return response()->json($event);
     }
 
