@@ -1,17 +1,17 @@
 <template>
     <v-container fluid grid-list-lg >
         <v-layout justify-center wrap>
-            <v-flex v-for="event in events" :key="event.id" xs6 sm4 md3 lg2>
-                <v-card :to="'event/'+event.alias" class="game-card" dark color="grey darken-4"
+            <v-flex v-for="team in teams" :key="team.id" xs6 sm4 md3 lg2>
+                <v-card :to="'team/'+team.alias" class="game-card" dark color="grey darken-4"
                 raised ripple>
                     <v-card-media
-                        :src="event.bgimage"
+                        :src="team.bgimage"
                         height="120px"
                         >
                     </v-card-media>
 
                     <v-card-title fluid  primary-title class="pa-2 headline justify-center">
-                        {{ event.name }}
+                        {{ team.name }}
                     </v-card-title>
                 </v-card>
             </v-flex>
@@ -22,12 +22,12 @@
 <script>
     export default {
         data: () => ({
-            events: []
+            teams: []
         }),
         mounted() {
-            axios.get('/lapi/events').then(response => {
+            axios.get('/lapi/teams').then(response => {
                 // TODO: response error handling
-                this.events = response.data
+                this.teams = response.data
             }).catch(error => {
                 console.log(error)
             })

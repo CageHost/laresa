@@ -39,8 +39,8 @@
             </v-btn>
             <v-toolbar-items slot="extension" class="hidden-sm-and-down">
                 <v-btn to="/games" flat>Games</v-btn>
-                <v-btn flat>Events</v-btn>
-                <v-btn flat>Teams</v-btn>
+                <v-btn to="/events" flat>Events</v-btn>
+                <v-btn to="/teams" flat>Teams</v-btn>
                 <v-btn flat>Prizes</v-btn>
                 <v-btn v-if="this.authUser" href="/logout" flat>Logout</v-btn>
                 <v-btn v-else to="/login" flat>Login</v-btn>
