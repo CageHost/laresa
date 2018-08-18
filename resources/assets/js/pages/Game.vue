@@ -95,13 +95,10 @@
                                                     <span class="pl-2 font-weight-black">09/28/2018</span>
                                                 </v-chip>
                                             </v-list-tile-action>
-
                                         </v-list-tile>
 
                                         <v-list-tile>
-                                            <v-list-content>
-                                                Can't put much here
-                                            </v-list-content>
+                                            Can't put much here
                                         </v-list-tile>
                                     </v-list-group>
                                 </v-list>
@@ -144,57 +141,58 @@
                                 <v-spacer></v-spacer>
                                 <v-btn icon><v-icon>expand_less</v-icon></v-btn>
                             </v-toolbar>
-                        <v-list two-line>
-                            <v-list-tile avatar @click="" ripple>
-                                <v-list-tile-avatar tile color="green lighten-1" size="48">
-                                    <v-icon large color="blue darken-1">adb</v-icon>
-                                </v-list-tile-avatar>
 
-                                <v-list-tile-content>
-                                    <v-list-tile-title>Wowiors</v-list-tile-title>
-                                    <v-list-tile-sub-title>We are Warrios of WoW</v-list-tile-sub-title>
-                                </v-list-tile-content>
+                            <v-list two-line>
+                                <v-list-tile avatar @click="" ripple>
+                                    <v-list-tile-avatar tile color="green lighten-1" size="48">
+                                        <v-icon large color="blue darken-1">adb</v-icon>
+                                    </v-list-tile-avatar>
 
-                                <v-list-tile-action>
-                                    <v-chip label color="yellow lighten-2" text-color="black">
-                                        <v-icon color="red darken-2">people</v-icon>
-                                        <span class="pl-2 font-weight-black">12</span>
-                                    </v-chip>
-                                </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Wowiors</v-list-tile-title>
+                                        <v-list-tile-sub-title>We are Warrios of WoW</v-list-tile-sub-title>
+                                    </v-list-tile-content>
 
-                                <v-list-tile-action>
-                                    <v-chip label color="yellow lighten-2" text-color="black">
-                                        <v-icon color="red darken-2">signal_cellular_alt</v-icon>
-                                        <span class="pl-2 font-weight-black">2nd</span>
-                                    </v-chip>
-                                </v-list-tile-action>
-                            </v-list-tile>
+                                    <v-list-tile-action>
+                                        <v-chip label color="yellow lighten-2" text-color="black">
+                                            <v-icon color="red darken-2">people</v-icon>
+                                            <span class="pl-2 font-weight-black">12</span>
+                                        </v-chip>
+                                    </v-list-tile-action>
 
-                            <v-list-tile avatar>
-                                <v-list-tile-avatar tile color="red" size="48">
-                                    <v-icon large>traffic</v-icon>
-                                </v-list-tile-avatar>
+                                    <v-list-tile-action>
+                                        <v-chip label color="yellow lighten-2" text-color="black">
+                                            <v-icon color="red darken-2">signal_cellular_alt</v-icon>
+                                            <span class="pl-2 font-weight-black">2nd</span>
+                                        </v-chip>
+                                    </v-list-tile-action>
+                                </v-list-tile>
 
-                                <v-list-tile-content>
-                                    <v-list-tile-title>Rage Quitters</v-list-tile-title>
-                                    <v-list-tile-sub-title>We troll noobs and quit!</v-list-tile-sub-title>
-                                </v-list-tile-content>
+                                <v-list-tile avatar>
+                                    <v-list-tile-avatar tile color="red" size="48">
+                                        <v-icon large>traffic</v-icon>
+                                    </v-list-tile-avatar>
 
-                                <v-list-tile-action>
-                                    <v-chip label color="yellow lighten-2" text-color="black">
-                                        <v-icon color="red darken-2">people</v-icon>
-                                        <span class="pl-2 font-weight-black">7</span>
-                                    </v-chip>
-                                </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Rage Quitters</v-list-tile-title>
+                                        <v-list-tile-sub-title>We troll noobs and quit!</v-list-tile-sub-title>
+                                    </v-list-tile-content>
 
-                                <v-list-tile-action>
-                                    <v-chip label color="yellow lighten-2" text-color="black">
-                                        <v-icon color="red darken-2">signal_cellular_alt</v-icon>
-                                        <span class="pl-2 font-weight-black">37th</span>
-                                    </v-chip>
-                                </v-list-tile-action>
-                            </v-list-tile>
-                        </v-list>
+                                    <v-list-tile-action>
+                                        <v-chip label color="yellow lighten-2" text-color="black">
+                                            <v-icon color="red darken-2">people</v-icon>
+                                            <span class="pl-2 font-weight-black">7</span>
+                                        </v-chip>
+                                    </v-list-tile-action>
+
+                                    <v-list-tile-action>
+                                        <v-chip label color="yellow lighten-2" text-color="black">
+                                            <v-icon color="red darken-2">signal_cellular_alt</v-icon>
+                                            <span class="pl-2 font-weight-black">37th</span>
+                                        </v-chip>
+                                    </v-list-tile-action>
+                                </v-list-tile>
+                            </v-list>
                         </v-card>
                     </v-container>
 

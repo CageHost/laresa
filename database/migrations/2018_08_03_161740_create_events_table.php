@@ -18,7 +18,7 @@ class CreateEventsTable extends Migration
             $table->timestamps();
 
             $table->boolean('active')->default(1);
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('alias')->nullable();
             $table->string('image')->nullable();
             $table->string('bgimage')->nullable();

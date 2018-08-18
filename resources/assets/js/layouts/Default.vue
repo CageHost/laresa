@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+    <v-app class="esa-app">
         <v-navigation-drawer app right temporary
         v-model="drawer"
         v-resize="showHideDrawer">
@@ -23,7 +23,8 @@
             </v-list>
         </v-navigation-drawer>
 
-        <v-toolbar app dark prominent extended scroll-toolbar-off-screen>
+        <v-toolbar app dark prominent extended scroll-toolbar-off-screen scroll-threshold="0"
+        class="esa-app-toolbar">
             <v-toolbar-title slot="extension">
                 <router-link to="/">
                     <div class="hidden-md-and-up"><span>ESA</span></div>
@@ -83,6 +84,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .esa-app {
+        // min-width: 600px;
+    }
+
+    .esa-app-toolbar {
+        // max-width: 1400px;
+    }
+
     .filler {
         height: 9000px;
     }
