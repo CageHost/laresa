@@ -33663,6 +33663,9 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_vue__;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_Teams___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__pages_Teams__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_Team__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_Team___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__pages_Team__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_teams_create__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_teams_create___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__pages_teams_create__);
+
 
 
 
@@ -33705,14 +33708,35 @@ var routes = [{
     component: __WEBPACK_IMPORTED_MODULE_8__pages_Teams___default.a
 }, { path: '/team/:alias', component: __WEBPACK_IMPORTED_MODULE_9__pages_Team___default.a }];
 
-var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
-    mode: 'history',
-    routes: routes
+var authRoutes = [{ path: '/teams/create', component: __WEBPACK_IMPORTED_MODULE_10__pages_teams_create___default.a }];
+
+var guestRoutes = [{ path: '/login', name: 'login', component: __WEBPACK_IMPORTED_MODULE_3__pages_Login___default.a }];
+
+authRoutes.map(function (route) {
+    route.beforeEnter = function (to, from, next) {
+        if (!window.user.name) {
+            next('/');
+        }
+        next();
+    };
+    return route;
 });
 
-router.beforeEach(function (to, from, next) {
-    window.scrollTo(0, 0);
-    next();
+guestRoutes.map(function (route) {
+    route.beforeEnter = function (to, from, next) {
+        if (window.user.name) {
+            next('/');
+        }
+        next();
+    };
+    return route;
+});
+
+var allRoutes = [].concat(routes, authRoutes, guestRoutes);
+
+var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
+    mode: 'history',
+    routes: allRoutes
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (router);
@@ -40091,7 +40115,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.game-card .headline[data-v-8eba126e] {\n    font-size: 18px !important;\n    letter-spacing: 1px !important;\n    text-shadow: 1px 1px 2px #000;\n}\n", ""]);
+exports.push([module.i, "\n.esa-flex-auto[data-v-8eba126e] {\n    -webkit-box-flex: 0;\n        -ms-flex: 0 0 auto;\n            flex: 0 0 auto;\n    /* TODO: irrelevant if sibling is not flex */\n    margin-right: -16px;\n}\n.game-card .headline[data-v-8eba126e] {\n    font-size: 18px !important;\n    letter-spacing: 1px !important;\n    text-shadow: 1px 1px 2px #000;\n}\n.create-button[data-v-8eba126e] {\n    margin-top: 0;\n    height: 58px;\n}\n", ""]);
 
 // exports
 
@@ -40123,11 +40147,117 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            teams: []
+            teams: [],
+            search: ''
         };
     },
     mounted: function mounted() {
@@ -40151,47 +40281,253 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-container",
-    { attrs: { fluid: "", "grid-list-lg": "" } },
+    "div",
     [
       _c(
-        "v-layout",
-        { attrs: { "justify-center": "", wrap: "" } },
-        _vm._l(_vm.teams, function(team) {
-          return _c(
-            "v-flex",
-            { key: team.id, attrs: { xs6: "", sm4: "", md3: "", lg2: "" } },
+        "v-container",
+        { staticClass: "pa-0 ma-0", attrs: { fluid: "", "grid-list-lg": "" } },
+        [
+          _c(
+            "v-layout",
+            { attrs: { wrap: "" } },
             [
               _c(
-                "v-card",
-                {
-                  staticClass: "game-card",
-                  attrs: {
-                    to: "team/" + team.alias,
-                    dark: "",
-                    color: "grey darken-4",
-                    raised: "",
-                    ripple: ""
-                  }
-                },
+                "v-flex",
+                { attrs: { md3: "", "pr-0": "" } },
                 [
-                  _c("v-card-media", {
-                    attrs: { src: team.bgimage, height: "120px" }
-                  }),
+                  _c(
+                    "v-toolbar",
+                    { staticClass: "red" },
+                    [_c("v-toolbar-title", [_vm._v("Teams Menu")])],
+                    1
+                  ),
                   _vm._v(" "),
                   _c(
-                    "v-card-title",
-                    {
-                      staticClass: "pa-2 headline justify-center",
-                      attrs: { fluid: "", "primary-title": "" }
-                    },
+                    "v-card",
                     [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(team.name) +
-                          "\n                "
+                      _c(
+                        "v-list",
+                        [
+                          _c(
+                            "v-list-tile",
+                            { attrs: { to: "/teams/create" } },
+                            [
+                              _c(
+                                "v-list-tile-action",
+                                [
+                                  _c(
+                                    "v-icon",
+                                    { attrs: { color: "success" } },
+                                    [_vm._v("group_add")]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("v-list-tile-content", [
+                                _c("span", { staticClass: "green--text" }, [
+                                  _vm._v("Create Team")
+                                ])
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-list-tile",
+                            { attrs: { to: "/teams" } },
+                            [
+                              _c(
+                                "v-list-tile-action",
+                                [_c("v-icon", [_vm._v("group")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-list-tile-content",
+                                [_c("v-list-tile-title", [_vm._v("My Teams")])],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
                       )
-                    ]
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { md9: "" } },
+                [
+                  _c(
+                    "v-container",
+                    [
+                      _c(
+                        "v-layout",
+                        { attrs: { wrap: "" } },
+                        [
+                          _c(
+                            "v-flex",
+                            { attrs: { xs12: "", sm8: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Search",
+                                  "append-icon": "search",
+                                  outline: "",
+                                  "hide-details": ""
+                                },
+                                model: {
+                                  value: _vm.search,
+                                  callback: function($$v) {
+                                    _vm.search = $$v
+                                  },
+                                  expression: "search"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { sm4: "" } },
+                            [
+                              _c(
+                                "v-btn",
+                                {
+                                  staticClass: "create-button",
+                                  attrs: {
+                                    to: "/teams/create",
+                                    color: "success",
+                                    large: "",
+                                    block: "",
+                                    outline: ""
+                                  }
+                                },
+                                [
+                                  _c("v-icon", { attrs: { left: "" } }, [
+                                    _vm._v("group_add")
+                                  ]),
+                                  _vm._v(
+                                    " Create Team\n                            "
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-data-iterator",
+                        {
+                          attrs: {
+                            items: _vm.teams,
+                            search: _vm.search,
+                            "rows-per-page-items": [8, 20, 100],
+                            "content-tag": "v-layout",
+                            row: "",
+                            wrap: ""
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "item",
+                              fn: function(props) {
+                                return _c(
+                                  "v-flex",
+                                  {
+                                    attrs: {
+                                      xs6: "",
+                                      sm4: "",
+                                      md4: "",
+                                      lg3: ""
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "v-card",
+                                      {
+                                        staticClass: "game-card",
+                                        attrs: {
+                                          to: "team/" + props.item.alias,
+                                          dark: "",
+                                          color: "grey darken-4",
+                                          raised: "",
+                                          ripple: ""
+                                        }
+                                      },
+                                      [
+                                        _c("v-card-media", {
+                                          attrs: {
+                                            src: props.item.bgimage,
+                                            height: "120px"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-card-title",
+                                          {
+                                            staticClass:
+                                              "pa-2 headline justify-center",
+                                            attrs: {
+                                              fluid: "",
+                                              "primary-title": ""
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                " +
+                                                _vm._s(props.item.name) +
+                                                "\n                            "
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              }
+                            }
+                          ])
+                        },
+                        [
+                          _c(
+                            "v-alert",
+                            {
+                              staticClass: "ma-2",
+                              attrs: {
+                                slot: "no-results",
+                                value: true,
+                                color: "error",
+                                icon: "warning"
+                              },
+                              slot: "no-results"
+                            },
+                            [
+                              _vm._v(
+                                '\n                        Your search for "' +
+                                  _vm._s(_vm.search) +
+                                  '" found no results.\n                        '
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
                   )
                 ],
                 1
@@ -40199,7 +40535,8 @@ var render = function() {
             ],
             1
           )
-        })
+        ],
+        1
       )
     ],
     1
@@ -40848,6 +41185,314 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-66ab2f82", module.exports)
+  }
+}
+
+/***/ }),
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(112)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(114)
+/* template */
+var __vue_template__ = __webpack_require__(115)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-5dbcd592"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/pages/teams/create.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5dbcd592", Component.options)
+  } else {
+    hotAPI.reload("data-v-5dbcd592", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(113);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("1092a946", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5dbcd592\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./create.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5dbcd592\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./create.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 113 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.md-headline[data-v-5dbcd592] {\n  font-weight: bold;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 114 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      valid: true,
+      name: '',
+      nameRules: [function (v) {
+        return !!v || 'How shall we summon thee?';
+      }, function (v) {
+        return v && v.length <= 10 || 'Name must be less than 10 characters';
+      }],
+      email: '',
+      emailRules: [function (v) {
+        return !!v || 'E-mail is required';
+      },
+      // TODO: this is a beautiful line
+      function (v) {
+        return (/.+@.+/.test(v) || 'E-mail must be valid'
+        );
+      }],
+      select: null,
+      items: ['Doom (PC)', 'Quake Champions (PC)', 'Halo (PC)', 'Age of Empires 2 (PC)'],
+      checkbox: false
+    };
+  },
+
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      if (this.$refs.form.validate()) {
+        var data = new FormData();
+        data.append('name', this.name);
+
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/lapi/teams/create', data).then(function (response) {
+          // console.log(response.data)
+          //TODO: vuex success message
+          _this.$router.push('/teams');
+        }).catch(function (e) {
+          _this.errors.push(e);
+          debugger;
+        });
+      }
+    },
+    clear: function clear() {
+      this.$refs.form.reset();
+    }
+  }
+});
+
+/***/ }),
+/* 115 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-container",
+    [
+      _c("h1", { staticClass: "header text-xs-right red--text" }, [
+        _vm._v("Create Team")
+      ]),
+      _vm._v(" "),
+      _c("h3", { staticClass: "text-xs-center mb-4" }, [
+        _vm._v("Tell us about yourselves...")
+      ]),
+      _vm._v(" "),
+      _c("v-spacer"),
+      _vm._v(" "),
+      _c("h1", { staticClass: "text-xs-right" }),
+      _vm._v(" "),
+      _c(
+        "v-form",
+        {
+          ref: "form",
+          attrs: { "lazy-validation": "" },
+          model: {
+            value: _vm.valid,
+            callback: function($$v) {
+              _vm.valid = $$v
+            },
+            expression: "valid"
+          }
+        },
+        [
+          _c("v-text-field", {
+            attrs: {
+              rules: _vm.nameRules,
+              counter: 10,
+              label: "Team Name",
+              required: "",
+              outline: ""
+            },
+            model: {
+              value: _vm.name,
+              callback: function($$v) {
+                _vm.name = $$v
+              },
+              expression: "name"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "v-input",
+            [
+              _c("v-select", {
+                attrs: {
+                  items: _vm.items,
+                  rules: [
+                    function(v) {
+                      return !!v || "Do you even game bro?"
+                    }
+                  ],
+                  label: "Games Played",
+                  multiple: "",
+                  required: "",
+                  outline: ""
+                },
+                model: {
+                  value: _vm.select,
+                  callback: function($$v) {
+                    _vm.select = $$v
+                  },
+                  expression: "select"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            {
+              attrs: { disabled: !_vm.valid, color: "success" },
+              on: { click: _vm.submit }
+            },
+            [_vm._v("\n        Create Team\n        ")]
+          ),
+          _vm._v(" "),
+          _c("v-btn", { staticClass: "right", on: { click: _vm.clear } }, [
+            _vm._v("Clear Form")
+          ])
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5dbcd592", module.exports)
   }
 }
 

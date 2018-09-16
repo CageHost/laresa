@@ -9,10 +9,11 @@ import Events from './pages/Events'
 import EventPage from './pages/Event'
 import Teams from './pages/Teams'
 import TeamPage from './pages/Team'
+import CreateTeamPage from './pages/teams/create'
 
 Vue.use(VueRouter)
 
-const routes = [
+let routes = [
     {
         path: '/',
         name: 'home',
@@ -49,14 +50,39 @@ const routes = [
     { path: '/team/:alias', component: TeamPage },
 ]
 
+const authRoutes = [
+    { path: '/teams/create', component: CreateTeamPage },
+]
+
+const guestRoutes = [
+    { path: '/login', name: 'login', component: Login },
+]
+
+authRoutes.map((route) => {
+    route.beforeEnter = (to, from, next) => {
+        if (!window.user.name) {
+            next('/')
+        }
+        next()
+    }
+    return route
+})
+
+guestRoutes.map((route) => {
+    route.beforeEnter = (to, from, next) => {
+        if (window.user.name) {
+            next('/')
+        }
+        next()
+    }
+    return route
+})
+
+const allRoutes = [...routes, ...authRoutes, ...guestRoutes];
+
 const router = new VueRouter({
     mode: 'history',
-    routes,
+    routes: allRoutes,
 });
-
-router.beforeEach(function (to, from, next) {
-    window.scrollTo(0, 0)
-    next()
-})
 
 export default router;

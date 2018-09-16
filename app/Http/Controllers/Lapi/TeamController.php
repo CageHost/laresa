@@ -16,11 +16,12 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = Team::orderBy('name', 'desc')
-          ->take(100)
-          ->with('games')
-          ->with('events')
-          ->get();
+        $teams = Team::orderBy('id', 'desc')
+            ->where('active', 1)
+            ->take(100)
+            ->with('games')
+            ->with('events')
+            ->get();
         return response()->json($teams);
     }
 
@@ -42,7 +43,21 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data['name'] = $request->input('name');
+        // TODO: rename to slug:
+        $data['alias'] = str_slug($data['name'], '-');
+        // $data['avatar'] = $request->logo;
+        // Storage::disk('local')->put($data['avatar'], ?);
+        // $path = $request->file('logo')->store('public/logos');
+        // $fullPath =  Storage::url($path);
+
+        $team = Team::create([
+            'name' => $data['name'],
+            'alias' => $data['alias'],
+            // 'background' => $fullPath,
+        ]);
+
+        return $team;
     }
 
     /**

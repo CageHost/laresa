@@ -37,6 +37,7 @@ Route::prefix('lapi')->namespace('Lapi')->group(function () {
 
     Route::get('/teams', 'TeamController@index');
     Route::get('/team/{id}', 'TeamController@show');
+    Route::post('/teams/create', 'TeamController@store');
 });
 
 // TODO: will this take twice as long, or be twice as good?
