@@ -33715,7 +33715,7 @@ var guestRoutes = [{ path: '/login', name: 'login', component: __WEBPACK_IMPORTE
 authRoutes.map(function (route) {
     route.beforeEnter = function (to, from, next) {
         if (!window.user.name) {
-            next('/');
+            next('/login');
         }
         next();
     };
@@ -40252,6 +40252,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -40367,6 +40368,7 @@ var render = function() {
                 [
                   _c(
                     "v-container",
+                    { attrs: { fluid: "" } },
                     [
                       _c(
                         "v-layout",
@@ -40416,7 +40418,7 @@ var render = function() {
                                     _vm._v("group_add")
                                   ]),
                                   _vm._v(
-                                    " Create Team\n                            "
+                                    "Create Team\n                            "
                                   )
                                 ],
                                 1
@@ -40940,6 +40942,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     //TODO: why name?
@@ -41019,7 +41058,15 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _c("v-list-tile-action", [_c("v-icon", [_vm._v("home")])], 1)
+                  _c(
+                    "v-list-tile-action",
+                    [
+                      _c("v-icon", { attrs: { color: "red" } }, [
+                        _vm._v("home")
+                      ])
+                    ],
+                    1
+                  )
                 ],
                 1
               ),
@@ -41042,12 +41089,134 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "v-list-tile-action",
-                    [_c("v-icon", [_vm._v("gamepad")])],
+                    [
+                      _c("v-icon", { attrs: { color: "red" } }, [
+                        _vm._v("gamepad")
+                      ])
+                    ],
                     1
                   )
                 ],
                 1
-              )
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-tile",
+                { attrs: { to: "/teams" } },
+                [
+                  _c(
+                    "v-list-tile-content",
+                    [
+                      _c(
+                        "v-list-tile-title",
+                        { staticClass: "text-xs-right" },
+                        [_vm._v("Teams")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile-action",
+                    [
+                      _c("v-icon", { attrs: { color: "red" } }, [
+                        _vm._v("group")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-tile",
+                { attrs: { to: "/prizes" } },
+                [
+                  _c(
+                    "v-list-tile-content",
+                    [
+                      _c(
+                        "v-list-tile-title",
+                        { staticClass: "text-xs-right" },
+                        [_vm._v("Prizes")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile-action",
+                    [
+                      _c("v-icon", { attrs: { color: "red" } }, [
+                        _vm._v("card_giftcard")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-divider"),
+              _vm._v(" "),
+              this.authUser
+                ? _c(
+                    "v-list-tile",
+                    { attrs: { href: "/logout" } },
+                    [
+                      _c(
+                        "v-list-tile-content",
+                        [
+                          _c(
+                            "v-list-tile-title",
+                            { staticClass: "text-xs-right" },
+                            [_vm._v("Logout")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-tile-action",
+                        [
+                          _c("v-icon", { attrs: { color: "red" } }, [
+                            _vm._v("directions_walk")
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _c(
+                    "v-list-tile",
+                    { attrs: { to: "/login" } },
+                    [
+                      _c(
+                        "v-list-tile-content",
+                        [
+                          _c(
+                            "v-list-tile-title",
+                            { staticClass: "text-xs-right" },
+                            [_vm._v("Login")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-tile-action",
+                        [
+                          _c("v-icon", { attrs: { color: "red" } }, [
+                            _vm._v("face")
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
             ],
             1
           )
@@ -41120,12 +41289,12 @@ var render = function() {
                 _vm._v("Games")
               ]),
               _vm._v(" "),
-              _c("v-btn", { attrs: { to: "/events", flat: "" } }, [
-                _vm._v("Events")
-              ]),
-              _vm._v(" "),
               _c("v-btn", { attrs: { to: "/teams", flat: "" } }, [
                 _vm._v("Teams")
+              ]),
+              _vm._v(" "),
+              _c("v-btn", { attrs: { to: "/events", flat: "" } }, [
+                _vm._v("Events")
               ]),
               _vm._v(" "),
               _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Prizes")]),
@@ -41396,12 +41565,12 @@ var render = function() {
   return _c(
     "v-container",
     [
-      _c("h1", { staticClass: "header text-xs-right red--text" }, [
-        _vm._v("Create Team")
+      _c("h1", { staticClass: "header text-xs-left red--text" }, [
+        _vm._v("New Team")
       ]),
       _vm._v(" "),
-      _c("h3", { staticClass: "text-xs-center mb-4" }, [
-        _vm._v("Tell us about yourselves...")
+      _c("h3", { staticClass: "text-xs-left mb-4" }, [
+        _vm._v("Tell us about yourselves")
       ]),
       _vm._v(" "),
       _c("v-spacer"),
@@ -41473,7 +41642,7 @@ var render = function() {
               attrs: { disabled: !_vm.valid, color: "success" },
               on: { click: _vm.submit }
             },
-            [_vm._v("\n        Create Team\n        ")]
+            [_vm._v("\n            Create Team\n        ")]
           ),
           _vm._v(" "),
           _c("v-btn", { staticClass: "right", on: { click: _vm.clear } }, [

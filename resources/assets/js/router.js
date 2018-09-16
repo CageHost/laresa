@@ -61,7 +61,7 @@ const guestRoutes = [
 authRoutes.map((route) => {
     route.beforeEnter = (to, from, next) => {
         if (!window.user.name) {
-            next('/')
+            next('/login')
         }
         next()
     }

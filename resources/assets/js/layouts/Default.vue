@@ -2,14 +2,15 @@
     <v-app class="esa-app">
         <v-navigation-drawer app right temporary
         v-model="drawer"
-        v-resize="showHideDrawer">
+        v-resize="showHideDrawer"
+        >
             <v-list>
                 <v-list-tile to="/">
                     <v-list-tile-content >
                         <v-list-tile-title class="text-xs-right">Home</v-list-tile-title>
                     </v-list-tile-content>
                     <v-list-tile-action>
-                        <v-icon>home</v-icon>
+                        <v-icon color="red">home</v-icon>
                     </v-list-tile-action>
                 </v-list-tile>
                 <v-list-tile to="/games">
@@ -17,9 +18,45 @@
                         <v-list-tile-title class="text-xs-right">Games</v-list-tile-title>
                     </v-list-tile-content>
                     <v-list-tile-action>
-                        <v-icon>gamepad</v-icon>
+                        <v-icon color="red">gamepad</v-icon>
                     </v-list-tile-action>
                 </v-list-tile>
+                <v-list-tile to="/teams">
+                    <v-list-tile-content>
+                        <v-list-tile-title class="text-xs-right">Teams</v-list-tile-title>
+                    </v-list-tile-content>
+                    <v-list-tile-action>
+                        <v-icon color="red">group</v-icon>
+                    </v-list-tile-action>
+                </v-list-tile>
+                <v-list-tile to="/prizes">
+                    <v-list-tile-content>
+                        <v-list-tile-title class="text-xs-right">Prizes</v-list-tile-title>
+                    </v-list-tile-content>
+                    <v-list-tile-action>
+                        <v-icon color="red">card_giftcard</v-icon>
+                    </v-list-tile-action>
+                </v-list-tile>
+                <v-divider/>
+
+                <v-list-tile v-if="this.authUser" href="/logout">
+                    <v-list-tile-content>
+                        <v-list-tile-title class="text-xs-right">Logout</v-list-tile-title>
+                    </v-list-tile-content>
+                    <v-list-tile-action>
+                        <v-icon color="red">directions_walk</v-icon>
+                    </v-list-tile-action>
+                </v-list-tile>
+
+                <v-list-tile v-else to="/login">
+                    <v-list-tile-content>
+                        <v-list-tile-title class="text-xs-right">Login</v-list-tile-title>
+                    </v-list-tile-content>
+                    <v-list-tile-action>
+                        <v-icon color="red">face</v-icon>
+                    </v-list-tile-action>
+                </v-list-tile>
+
             </v-list>
         </v-navigation-drawer>
 
@@ -40,8 +77,8 @@
             </v-btn>
             <v-toolbar-items slot="extension" class="hidden-sm-and-down">
                 <v-btn to="/games" flat>Games</v-btn>
-                <v-btn to="/events" flat>Events</v-btn>
                 <v-btn to="/teams" flat>Teams</v-btn>
+                <v-btn to="/events" flat>Events</v-btn>
                 <v-btn flat>Prizes</v-btn>
                 <v-btn v-if="this.authUser" href="/logout" flat>Logout</v-btn>
                 <v-btn v-else to="/login" flat>Login</v-btn>

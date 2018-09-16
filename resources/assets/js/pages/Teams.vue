@@ -66,7 +66,7 @@
                 </v-flex>
 
                 <v-flex md9>
-                    <v-container>
+                    <v-container fluid>
 
                         <v-layout wrap>
                             <v-flex xs12 sm8>
@@ -81,8 +81,9 @@
 
                             <v-flex sm4>
                                 <v-btn to="/teams/create" class="create-button" color="success"
-                                 large block outline>
-                                    <v-icon left>group_add</v-icon> Create Team
+                                 large block outline
+                                >
+                                    <v-icon left>group_add</v-icon>Create Team
                                 </v-btn>
                             </v-flex>
                         </v-layout>

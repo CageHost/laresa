@@ -1,7 +1,7 @@
 <template>
     <v-container>
-        <h1 class="header text-xs-right red--text">Create Team</h1>
-        <h3 class="text-xs-center mb-4">Tell us about yourselves...</h3>
+        <h1 class="header text-xs-left red--text">New Team</h1>
+        <h3 class="text-xs-left mb-4">Tell us about yourselves</h3>
 
         <v-spacer></v-spacer>
         <h1 class="text-xs-right"></h1>
@@ -32,7 +32,7 @@
             @click="submit"
             color="success"
             >
-            Create Team
+                Create Team
             </v-btn>
             <v-btn class="right" @click="clear">Clear Form</v-btn>
         </v-form>
