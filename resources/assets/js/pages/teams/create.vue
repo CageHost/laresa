@@ -6,26 +6,27 @@
         <v-spacer></v-spacer>
         <h1 class="text-xs-right"></h1>
         <v-form ref="form" v-model="valid" lazy-validation>
-                <v-text-field
-                v-model="name"
-                :rules="nameRules"
-                :counter="10"
-                label="Team Name"
-                required
-                outline
-                ></v-text-field>
+            <v-text-field
+            v-model="name"
+            :rules="nameRules"
+            :counter="10"
+            label="Team Name"
+            required
+            outline
+            class="mb-3"
+            ></v-text-field>
 
-            <v-input>
-                <v-select
-                v-model="select"
-                :items="items"
-                :rules="[v => !!v || 'Do you even game bro?']"
-                label="Games Played"
-                multiple
-                required
-                outline
-                ></v-select>
-            </v-input>
+            <v-file/>
+
+            <v-select
+            v-model="select"
+            :items="items"
+            :rules="[v => !!v || 'Do you even game bro?']"
+            label="Games Played"
+            multiple
+            required
+            outline
+            ></v-select>
 
             <v-btn
             :disabled="!valid"
@@ -41,8 +42,12 @@
 
 <script>
   import axios from 'axios'
+  import VFile from '../../components/UploadButton.vue'
 
   export default {
+      components: {
+          'v-file': VFile
+      },
     data: () => ({
       valid: true,
       name: '',
